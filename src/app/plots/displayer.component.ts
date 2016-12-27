@@ -45,7 +45,7 @@ export class Displayer implements OnInit {
       data: {
         labels: this.keyMaker(this.sbo.gross).slice(-range),
         datasets: [{
-          label: 'SBO',
+          label: 'SBO ',
           data: this.slicer(this.sbo).slice(-range),
           backgroundColor: "#00C9FF"
         }, {
@@ -58,8 +58,8 @@ export class Displayer implements OnInit {
         legend: {
           display: true,
           labels: {
-            fontColor: 'blue',
-            fontSize: 16,
+            usePointStyle: true,
+            fontSize: 18,
             lineCap: "round",
           }
         }
