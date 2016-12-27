@@ -1,0 +1,39 @@
+<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+/*.container {
+  width: 80%;
+  margin: 15px auto;
+}*/
+.plotter {
+	min-height: 480px;
+	background: white;
+	border-radius: 6px;
+}
+h2 {
+	padding: 12px;
+}
+.droplet {
+	margin-top: 12px;
+}
+</style>
+
+
+<ba-card title="Visitors By Page" baCardClass="with-scroll">
+    
+    
+	<h2> 
+		{{ choice | uppercase }} 
+		<ui-switch (change)="onChange($event)" class="switch switch-large pull-right" [checked]="true" ></ui-switch>
+	</h2>
+	<div class="plotter">
+		<canvas id="myChart"></canvas>
+		<span class="pull-right droplet">
+		  <input type="range"  min="7" max="30" (change)="updateRange($event)" /> {{ data_range }} days
+		</span>
+	</div>
+</ba-card>
+

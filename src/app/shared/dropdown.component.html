@@ -1,0 +1,58 @@
+
+<style>
+.labeler {
+	display: inline;
+	position: relative;
+}
+
+.dropdown-menu {
+	right: 5%;
+}
+
+.indent {
+	padding: 5px;
+}
+</style>
+
+<div  *ngFor="let active of sort(selected); let i = index" >
+  <div *ngIf="active">
+    <span class="team-element" >
+      {{ active.name }}
+    </span> <a><i class="fa fa-times text-danger pull-right" (click)="dropItem(selected,i)"></i></a>
+  </div>
+</div>
+
+
+
+  <div class="btn-block ">
+	<button type="button" class="btn btn-default dropdown-toggle btn-block" data-toggle="dropdown">
+	   Add More <i class="fa fa-plus text-primary"></i>
+	</button>
+	  <ul class="dropdown-menu scrollable-menu" role="menu">
+	    <li>
+	      <div class="input-group">
+	        <button class="btn btn-block btn-warning" (click)="populate(available)">Add All
+	          <i class="fa fa-check"></i>
+	        </button>
+	      </div>
+	    </li>
+	    
+	      <div *ngFor="let item of sort(available); let j = index" class="indent" >
+	      <span *ngIf="item">
+	
+
+	        <span class="labeler">
+
+	          {{ item.name }}
+	        </span>
+	        <button style="font-size: 6px;" class="btn btn-sm btn-success pull-right" (click)="add(available,j)" >
+	          <i class="fa fa-plus"></i>
+	        </button>
+	   
+	      </span>
+	    </div>
+	</ul>
+  </div>
+
+
+

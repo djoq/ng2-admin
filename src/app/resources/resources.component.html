@@ -1,0 +1,30 @@
+<span *ngFor="let resource of resources">
+ {{ resource.id }}.
+  <a [routerLink]="['/pages/resources', resource._id]" > {{ resource.name }}</a>
+ 
+ <br>
+</span>
+
+<resource-creation></resource-creation>
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <section class="widget" widget>
+        <header>
+          <h4>
+            <h2 class="text-center">Resources</h2>
+          </h4>
+        </header>
+        <div class="widget-body">
+          <div *ngIf="resources">
+            <filter-component (filterUpdated)="filterUpdated($event)" [(search)]="search" [(filter)]="resources"></filter-component>
+            
+          </div>
+        </div>
+      </section>
+    </div>
+    
+  </div>
+</div>
+ -->

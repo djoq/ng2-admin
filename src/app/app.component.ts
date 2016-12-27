@@ -1,9 +1,12 @@
 import './app.loader.ts';
-import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
+import { Component, ViewEncapsulation, ViewContainerRef, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { GlobalState } from './global.state';
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
 import { layoutPaths } from './theme/theme.constants';
 import { BaThemeConfig } from './theme/theme.config';
+import { AppState } from './app.service';
+
 
 /*
  * App Component
@@ -18,16 +21,20 @@ import { BaThemeConfig } from './theme/theme.config';
       <div class="additional-bg"></div>
       <router-outlet></router-outlet>
     </main>
-  `
+  `,
 })
 export class App {
 
   isMenuCollapsed: boolean = false;
+  isLoggedIn: boolean = false;
+  errorMessage: any;
 
   constructor(private _state: GlobalState,
               private _imageLoader: BaImageLoaderService,
               private _spinner: BaThemeSpinner,
               private _config: BaThemeConfig,
+              public appState: AppState,
+              private router: Router,
               private viewContainerRef: ViewContainerRef) {
 
     this._loadImages();
@@ -35,6 +42,10 @@ export class App {
     this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
       this.isMenuCollapsed = isCollapsed;
     });
+  }
+
+  ngOnInit(): void {
+    // start functions
   }
 
   public ngAfterViewInit(): void {

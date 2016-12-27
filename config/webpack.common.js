@@ -1,3 +1,4 @@
+
 const webpack = require('webpack');
 const path = require('path');
 const helpers = require('./helpers');
@@ -24,7 +25,7 @@ const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
   title: 'ng2-admin - Angular 2 Admin Template',
   description: 'Free Angular 2 and Bootstrap 4 Admin Template',
-  baseUrl: '/',
+  baseUrl: '/webpack',
   isDevServer: helpers.isWebpackDevServer()
 };
 
@@ -44,7 +45,7 @@ module.exports = function (options) {
      *
      * See: http://webpack.github.io/docs/configuration.html#cache
      */
-    //cache: false,
+    cache: false,
 
     /*
      * The entry point for the bundle

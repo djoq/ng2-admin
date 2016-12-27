@@ -3,24 +3,22 @@ import {Component, ViewEncapsulation} from '@angular/core';
   selector: 'pages',
   encapsulation: ViewEncapsulation.None,
   styles: [],
+      // <ba-page-top></ba-page-top>
+      // <ba-content-top></ba-content-top>
+
   template: `
-    <ba-sidebar></ba-sidebar>
-    <ba-page-top></ba-page-top>
+    <ba-sidebar ></ba-sidebar>
     <div class="al-main">
       <div class="al-content">
-        <ba-content-top></ba-content-top>
         <router-outlet></router-outlet>
       </div>
     </div>
     <footer class="al-footer clearfix">
       <div class="al-footer-right">Created with <i class="ion-heart"></i></div>
       <div class="al-footer-main clearfix">
-        <div class="al-copy">&copy; <a href="http://akveo.com">Akveo</a> 2016</div>
+        <div class="al-copy">&copy; <a href="">SBO</a> 2017</div>
         <ul class="al-share clearfix">
-          <li><i class="socicon socicon-facebook"></i></li>
-          <li><i class="socicon socicon-twitter"></i></li>
-          <li><i class="socicon socicon-google"></i></li>
-          <li><i class="socicon socicon-github"></i></li>
+          <li><a href="https://github.com/djoq/ng2-admin"><i class="socicon socicon-github"></i></a></li>
         </ul>
       </div>
     </footer>

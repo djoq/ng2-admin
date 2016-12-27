@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div *ngIf="resource">
+        <h3> New Resource</h3>
+
+          <input type="submit" class="btn btn-success" value="Submit" style="float: right" (click)="create()" />
+          <div style="overflow: hidden; padding-right: .5em;">
+             <input [(ngModel)]="resource.name" class="form-control" style="width: 100%;" />
+          </div>​
+
+       </div>
+    </div>
+  </div>
+</div>

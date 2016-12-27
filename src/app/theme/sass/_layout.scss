@@ -15,6 +15,10 @@ html, body {
   min-width: $resMin;
 }
 
+.tighten-up {
+  margin-top: -75px;
+}
+
 main {
   min-height: 100%;
   position: relative;

@@ -1,0 +1,14 @@
+<style>
+a {
+  cursor: pointer;
+}
+</style>
+
+
+<div *ngIf="resource">
+  <input [(ngModel)]="resource.name">
+
+
+  <button class="btn btn-success" (click)="update()"> Update </button>
+  <a class="pull-right" (click)="remove()"> Delete </a>
+</div>

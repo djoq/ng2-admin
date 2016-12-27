@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
@@ -17,6 +17,9 @@ import { AppState, InternalStateType } from './app.service';
 import { GlobalState } from './global.state';
 import { NgaModule } from './theme/nga.module';
 import { PagesModule } from './pages/pages.module';
+import { DataService } from './services/data.service';
+import { ClientService } from './auth/client.service';
+import './rxjs-extensions';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -41,16 +44,19 @@ type StoreType = {
   imports: [ // import Angular's modules
     BrowserModule,
     HttpModule,
+    JsonpModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
     NgaModule.forRoot(),
     PagesModule,
-    routing
+    routing,
   ],
   providers: [ // expose our Services and Providers into Angular's dependency injection
     ENV_PROVIDERS,
-    APP_PROVIDERS
+    APP_PROVIDERS,
+    DataService,
+    ClientService
   ]
 })
 

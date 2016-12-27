@@ -1,0 +1,33 @@
+<style>
+.notifiy {
+  display: none;
+  position: absolute;
+    right: 100px;
+    z-index: 1;
+    
+}
+.alert {
+  margin-top: 5px;
+  width: 300px;
+  padding: 5px;
+}
+
+</style>
+<div *ngIf="!!statusMessage" class="container">
+
+<div [hidden]="!statusMessage.details.includes('50')" class="notify alert alert-danger pull-right" >
+  <strong><i class="fa fa-times-circle"></i> Error </strong>  
+  Please try refreshing your broswer.
+  <a  class="close pull-right" (click)="statusMessage.details = ''" aria-label="close">&times;</a>
+</div>
+
+<div [hidden]="!statusMessage.details.includes('40')" class="notify alert alert-warning pull-right" >
+  <strong><i class="fa fa-times-circle"></i> Blocked! </strong> You don't have permission to access this. 
+  <a  class="close pull-right" (click)="statusMessage.details = ''" aria-label="close">&times;</a>
+</div>
+</div>
+
+
+<div id="saver" style="display:none;" class="notify alert alert-success pull-right">
+  <strong><i class="fa fa-check-o"></i> Saved!! </strong> 
+</div>

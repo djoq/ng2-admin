@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation, ElementRef} from '@angular/core';
+import {Component, Input, ViewEncapsulation, OnInit, ElementRef} from '@angular/core';
 
 import {Chart} from './trafficChart.loader.ts';
 import {TrafficChartService} from './trafficChart.service';
@@ -12,11 +12,14 @@ import {TrafficChartService} from './trafficChart.service';
 
 // TODO: move chart.js to it's own component
 export class TrafficChart {
-
+  @Input() stats
   public doughnutData: Array<Object>;
 
   constructor(private trafficChartService:TrafficChartService) {
-    this.doughnutData = trafficChartService.getData();
+    
+  }
+  ngOnInit(){
+    this.doughnutData = this.trafficChartService.getData(this.stats);
   }
 
   ngAfterViewInit() {

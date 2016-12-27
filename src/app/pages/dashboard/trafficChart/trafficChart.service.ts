@@ -7,44 +7,66 @@ export class TrafficChartService {
   constructor(private _baConfig:BaThemeConfigProvider) {
   }
 
+  calcs(stats){
+    let vals = Object.keys(stats.gross).map(function(key){return parseInt(stats.gross[key]) })
+    let average = (vals.reduce( (x,y) => x+y,0) / vals.length)
+    let group = function(length) {
+      return (vals.slice(1).slice(-length).reduce( (x,y) => x+y,0)/length)
+    }
+    return { 
+      week: {
+        current: group(7).toFixed(1),
+        percent: ((group(7)-average)/average).toFixed(1)
+      },
+      month: {
+        current: group(30).toFixed(1),
+        percent: ((group(30)-average)/average).toFixed(1)
+      },
+      year: {
+        current: group(365).toFixed(1),
+        percent: ((group(365)-average)/average).toFixed(1)
+      },
+      today: {
+        current: (vals[vals.length-1]).toFixed(1),
+        percent: ((vals[vals.length-1]-average)/average).toFixed(1)
+      },
+      averages: average 
+    };
+  }
+  
 
-  getData() {
+
+  getData(stats) {
+    
     let dashboardColors = this._baConfig.get().colors.dashboard;
     return [
       {
-        value: 2000,
+        value: this.calcs(stats).today.current,
         color: dashboardColors.white,
         highlight: colorHelper.shade(dashboardColors.white, 15),
-        label: 'Other',
-        percentage: 87,
+        label: 'Today',
+        percentage: this.calcs(stats).today.percent,
         order: 1,
-      }, {
-        value: 1500,
-        color: dashboardColors.gossip,
-        highlight: colorHelper.shade(dashboardColors.gossip, 15),
-        label: 'Search engines',
-        percentage: 22,
-        order: 4,
-      }, {
-        value: 1000,
+      },{
+        value: this.calcs(stats).week.current,
         color: dashboardColors.silverTree,
         highlight: colorHelper.shade(dashboardColors.silverTree, 15),
-        label: 'Referral Traffic',
-        percentage: 70,
+        label: 'Past 7 Days',
+        percentage: this.calcs(stats).week.percent,
         order: 3,
       }, {
-        value: 1200,
+        value: this.calcs(stats).month.current,
         color: dashboardColors.surfieGreen,
         highlight: colorHelper.shade(dashboardColors.surfieGreen, 15),
-        label: 'Direct Traffic',
-        percentage: 38,
+        label: 'Past 30 Days',
+        percentage: this.calcs(stats).month.percent,
         order: 2,
       }, {
-        value: 400,
+        value: this.calcs(stats).year.current,
         color: dashboardColors.blueStone,
         highlight: colorHelper.shade(dashboardColors.blueStone, 15),
-        label: 'Ad Campaigns',
-        percentage: 17,
+        label: 'Past Year',
+        percentage: this.calcs(stats).year.percent,
         order: 0,
       },
     ];
