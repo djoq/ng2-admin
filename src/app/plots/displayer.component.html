@@ -22,11 +22,11 @@ h2 {
 </style>
 
 
-<ba-card title="Visitors By Page" baCardClass="with-scroll">
+<ba-card baCardClass="with-scroll">
     
     
-	<h2> 
-		{{ choice | uppercase }} 
+	<h2 > 
+		Filter: <span class="tag tag-default"> <span class="text-warning"> {{ choice | uppercase }} </span> </span>
 		<ui-switch (change)="onChange($event)" class="switch switch-large pull-right" [checked]="true" ></ui-switch>
 	</h2>
 	<div class="plotter">

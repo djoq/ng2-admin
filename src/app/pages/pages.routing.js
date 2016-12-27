@@ -8,14 +8,8 @@ var routes = [
         component: pages_component_1.Pages,
         children: [
             { path: '', redirectTo: 'overview', pathMatch: 'full' },
-            { path: 'dashboard', loadChildren: function () { return System.import('./dashboard/dashboard.module'); } },
-            { path: 'editors', loadChildren: function () { return System.import('./editors/editors.module'); } },
             //{ path: 'components', loadChildren: () => System.import('./components/components.module') }
-            { path: 'charts', loadChildren: function () { return System.import('./charts/charts.module'); } },
             { path: 'ui', loadChildren: function () { return System.import('./ui/ui.module'); } },
-            { path: 'forms', loadChildren: function () { return System.import('./forms/forms.module'); } },
-            { path: 'tables', loadChildren: function () { return System.import('./tables/tables.module'); } },
-            { path: 'maps', loadChildren: function () { return System.import('./maps/maps.module'); } },
             { path: 'plots', loadChildren: function () { return System.import('../plots/plot.module'); } },
             { path: 'overview', loadChildren: function () { return System.import('../stats/stat.module'); } },
         ]

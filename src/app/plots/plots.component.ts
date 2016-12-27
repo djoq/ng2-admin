@@ -22,11 +22,11 @@ export class PlotsComponent implements OnInit {
 
   ngOnInit() {
 
-    this.plotService.loadItem("assets/solution.json")
+    this.plotService.loadItem("/assets/solution.json")
        .then( sbo => { this.sbo = sbo;
       }, error =>  this.errorMessage = <any>error);
 
-    this.plotService.loadItem("assets/rxtrivia.json")
+    this.plotService.loadItem("/assets/rxtrivia.json")
        .then( rx => { this.rx = rx;
       }, error =>  this.errorMessage = <any>error);
 

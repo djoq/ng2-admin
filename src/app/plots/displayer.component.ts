@@ -36,9 +36,7 @@ export class Displayer implements OnInit {
 
 
   instantiate(range){
-    var myChart = null;
-    var ctx = null;
-    ctx = (<HTMLCanvasElement>document.getElementById('myChart')).getContext('2d');
+    var ctx = (<HTMLCanvasElement>document.getElementById('myChart')).getContext('2d');
 
     this.myChart = new Chart(ctx, {
       type: 'line',
@@ -68,6 +66,7 @@ export class Displayer implements OnInit {
   }
 
   onChange(val){
+    this.myChart.destroy();
     if(val){
       this.choice = "gross"
     } else {
@@ -77,9 +76,9 @@ export class Displayer implements OnInit {
   }
 
   ngOnInit() {
-    this.data_range = 30;
+    this.data_range = 15;
     console.log("received data", this.sbo)
-    this.instantiate(30);
+    this.instantiate(15);
   }
 
   updateRange(e){
